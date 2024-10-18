@@ -1,24 +1,24 @@
 # Functional-Light JavaScript
-# Chapter 6: Value Immutability
+# Capítulo 6: Imutabilidade de Valor
 
-In [Chapter 5](ch5.md), we talked about the importance of reducing side causes/effects: the ways that your application's state can change unexpectedly and cause surprises (bugs). The fewer places we have with such landmines, the more confidence we have over our code, and the more readable it will be. Our topic for this chapter follows directly from that same effort.
+No [Capitulo 5](ch5.md), falamos sobre a importância de reduzir as causas/efeitos colaterais: as maneiras pela qual o estado do seu aplicativo pode mudar inesperadamente e pode mudar e causar supresas (bugs). quanto menos lugares tivermos com tais minas terrestres, mais confiança teremos em nosso código, e mais legível vai ser. Nosso tópico para este capítulo segue diretamente esse mesmo esforço.
 
-If programming-style idempotence is about defining a value change operation so that it can only affect state once, we now turn our attention to the goal of reducing the number of change occurrences from one to zero.
+Se a idempotência no estilo de programação trata de definir uma operação de alteração de valor de forma que ela possa afetar o estado apenas uma vez, agora vamos focar no objetivo de reduzir o número de ocorrências de mudança de um para zero.
 
-Let's now explore value immutability, the notion that in our programs we use only values that cannot be changed.
+Agora vamos explorar a imutabilidade de valores, a noção de que em nossos programas utilizamos apenas valores que não podem ser alterados.
 
-## Primitive Immutability
+## Imutabilidade de Tipos Primitivos
 
-Values of the primitive types (`number`, `string`, `boolean`, `null`, and `undefined`) are already immutable; there's nothing you can do to change them:
+Valores dos tipos primitivos (`number`, `string`, `boolean`, `null` e `undefined`) já são imutáveis; não há nada que você possa fazer para alterá-los:
 
 ```js
-// invalid, and also makes no sense
+// inválido, e também não faz sentido
 2 = 2.5;
 ```
 
-However, JS does have a peculiar behavior which seems like it allows mutating such primitive type values: "boxing". When you access a property on certain primitive type values -- specifically `number`, `string`, and `boolean` -- under the covers JS automatically wraps (aka "boxes") the value in its object counterpart (`Number`, `String`, and `Boolean`, respectively).
+Entretanto, O JS tem um comportamento peculiar que parece permitir a mutação desses valores de tipo primitivo: "boxing". Quando você acessa uma propriedade Em certos tipos de valores primitivos -- especificamente `number`, `string`, e `boolean` -- O JS por baixo dos panos automaticamente os envolve (também conhecido como "boxes") em seus equivalentes de objeto (`Number`, `String`, e `Boolean`, respectivamente).
 
-Consider:
+Considere:
 
 ```js
 var x = 2;
@@ -29,16 +29,16 @@ x;              // 2
 x.length;       // undefined
 ```
 
-Numbers do not normally have a `length` property available, so the `x.length = 4` setting is trying to add a new property, and it silently fails (or is ignored/discarded, depending on your point-of-view); `x` continues to hold the simple primitive `2` number.
+Números normalmente não tem uma propriedade `length` disponível, então a configuração `x.length = 4` tenta adicionar uma nova propriedade, mas falha silenciosamente (ou é ignorada/descartada, dependendo do seu ponto de vista); `x` continua a armazenar o simples número primitivo `2`.
 
-But the fact that JS allows the `x.length = 4` statement to run at all can seem troubling, if for no other reason than its potential confusion to readers. The good news is, if you use strict mode (`"use strict";`), such a statement will throw an error.
+Mas o fato de o JS permitir que a instrução `x.length = 4` seja executada pode parecer preocupante, se não por outro motivo além da confusão que pode causar nos leitores. A boa notícia é, se você usar o modo estrito (`"use strict";`), tal instrução lançará um erro.
 
-What if you try to mutate the explicitly boxed object representation of such a value?
+E se você tentar mutar explicitamente a representação do objeto boxed como um valor?
 
 ```js
 var x = new Number( 2 );
 
-// works fine
+// Funciona sem problemas
 x.length = 4;
 ```
 
