@@ -1,77 +1,75 @@
-# Functional-Light JavaScript
+# Functional-Light JavaScript - PTBR
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-blue.svg)](http://creativecommons.org/licenses/by-nc-nd/4.0/)
 
-<a href="http://fljsbook.com"><img src="manuscript/images/marketing/front-cover-small.png" width="25%" align="right" hspace="20" vspace="20" title="Functional-Light JavaScript" alt="Book Cover"></a>
+<a href="https://leanpub.com/fljs"><img src="manuscript/images/marketing/front-cover-small.png" width="25%" align="right" hspace="20" vspace="20" title="Functional-Light JavaScript" alt="Capa do livro"></a>
 
-This book is a balanced, pragmatic look at FP in JavaScript. The first edition is now complete. Read here online **for free**, or:
-
-<p align="center">
-    <a href="http://fljsbook.com"><img src="https://img.shields.io/badge/Buy-Leanpub-yellow.svg" title="Buy on Leanpub" alt="Buy on Leanpub"></a> <a href="http://manning.fljsbook.com"><img src="https://img.shields.io/badge/Buy-Manning-yellow.svg" title="Buy on Manning" alt="Buy on Manning"></a> <a href="http://amazon.fljsbook.com"><img src="https://img.shields.io/badge/Buy-Amazon-yellow.svg" title="Buy on Amazon" alt="Buy on Amazon"></a>
-</p>
-
-"Functional-Light JavaScript" explores the core principles of functional programming (FP) as they are applied to JavaScript. But what makes this book different is that we approach these principles without drowning in all the heavy terminology. We look at a subset of FP foundational concepts that I call "Functional-Light Programming" (FLP) and apply it to JavaScript.
-
-**Note:** Despite the word "Light" in the title, I do not consider or recommend this book as a "beginner", "easy", or "intro" book on the topic. This book is rigorous and full of gritty detail; it expects a solid foundation of JS knowledge before diving in. "Light" means limited in scope; instead of being more broad, this book goes much deeper into each topic than you typically find in other FP-JavaScript books.
-
-Let's face it: unless you're already a member of the FP cool kids club (I'm not!), a statement like, "a monad is just a monoid in the category of endofunctors", just doesn't mean anything useful to us.
-
-That's not to say the terms are meaning*less* or that FPrs are bad for using them. Once you graduate from Functional-Light, you'll maybe/hopefully want to study FP more formally, and you'll certainly have plenty of exposure to what they mean and why.
-
-But I want you to be able to apply some of the fundamentals of FP to your JavaScript *now*, because I believe it will help you write better, more *reason*able code.
-
-**To read more about the motivations and perspective behind this book, check out the [Preface](manuscript/preface.md).**
-
-## Book
-
-[Table of Contents](manuscript/README.md/#table-of-contents)
-
-* [Foreword](manuscript/foreword.md/#foreword) (by [Brian Lonsdorf, aka "Prof Frisby"](https://twitter.com/DrBoolean))
-* [Preface](manuscript/preface.md/#preface)
-* [Chapter 1: Why Functional Programming?](manuscript/ch1.md/#chapter-1-why-functional-programming)
-* [Chapter 2: The Nature Of Functions](manuscript/ch2.md/#chapter-2-the-nature-of-functions)
-* [Chapter 3: Managing Function Inputs](manuscript/ch3.md/#chapter-3-managing-function-inputs)
-* [Chapter 4: Composing Functions](manuscript/ch4.md/#chapter-4-composing-functions)
-* [Chapter 5: Reducing Side Effects](manuscript/ch5.md/#chapter-5-reducing-side-effects)
-* [Chapter 6: Value Immutability](manuscript/ch6.md/#chapter-6-value-immutability)
-* [Chapter 7: Closure vs Object](manuscript/ch7.md/#chapter-7-closure-vs-object)
-* [Chapter 8: Recursion](manuscript/ch8.md/#chapter-8-recursion)
-* [Chapter 9: List Operations](manuscript/ch9.md/#chapter-9-list-operations)
-* [Chapter 10: Functional Async](manuscript/ch10.md/#chapter-10-functional-async)
-* [Chapter 11: Putting It All Together](manuscript/ch11.md/#chapter-11-putting-it-all-together)
-* [Appendix A: Transducing](manuscript/apA.md/#appendix-a-transducing)
-* [Appendix B: The Humble Monad](manuscript/apB.md/#appendix-b-the-humble-monad)
-* [Appendix C: FP Libraries](manuscript/apC.md/#appendix-c-fp-libraries)
-
-## Publishing
-
-This book has been published and is now available for purchase (in both ebook and print formats) from these sources:
+Esse livro é uma visão equilibrada e pragmática sobre programação funcional em JavaScript. A primeira edição está completa. Leia online aqui **de graça**, ou:
 
 <p align="center">
     <a href="http://fljsbook.com"><img src="https://img.shields.io/badge/Buy-Leanpub-yellow.svg" title="Buy on Leanpub" alt="Buy on Leanpub"></a> <a href="http://manning.fljsbook.com"><img src="https://img.shields.io/badge/Buy-Manning-yellow.svg" title="Buy on Manning" alt="Buy on Manning"></a> <a href="http://amazon.fljsbook.com"><img src="https://img.shields.io/badge/Buy-Amazon-yellow.svg" title="Buy on Amazon" alt="Buy on Amazon"></a>
 </p>
 
-If you'd like additionally to contribute financially towards the effort (or any of my other OSS work) aside from purchasing the book, I do have a [patreon](https://www.patreon.com/getify) that I would always appreciate your generosity towards.
+O "Functional-Light JavaScript" explora os princípios básicos de programação funcional (FP) mas, com uma abordagem a esses princípios sem o aprofundamento em toda a sua terminologia complexa, tratando apenas de um sub-conjunto de conceitos que chamamos de "Functional-Light Programming" (FLP) e o aplicando em JavaScript.
+
+**Nota:** Apesar da palavra "Light" no título, esse livro não é recomendado ou considerado "iniciante", "fácil", ou "introdutório" a este tópico. Este livro é rigoroso e cheio de detalhes complicados sendo necessária uma base sólida de conhecimento em JavaScript antes de explorado. "Light" significa limitado em escopo, ao invés de ser mais amplo, este livro vai muito mais profundo em cada tópico que você típicamente acharia em outros livros de Javascript funcional.
+
+Convenhamos que, a menos que você já seja membro do clube "_cool kids_" da programação funcional (o que não é o meu caso!), uma frase como "uma mônada é apenas um monóide na categoria dos endofuntores" não significa nada para nós.
+
+Não estou afirmando que esses termos não significam nada de útil ou que programadores funcionais são ruins por usá-los. Após dominar os conceitos desse livro, talvez queira estudar programação funcional mais formalmente, e certamente terá muita exposição ao que eles significam e por quê.
+
+Mas o meu objetivo com o "_Functional-Light JavaScript_" é aplicar alguns princípios básicos de programação funcional (FP) ao seu JavaScript, porque acredito que vai lhe ajudar a escrever um código melhor e mais fundamentado.
+
+**Para ler mais sobre a motivação e perspectiva por trás deste livro leia o [Prefácio](manuscript/preface.md).**
+
+## Livro
+
+[Índice](manuscript/README.md/#table-of-contents)
+
+* [Preâmbulo](manuscript/foreword.md/#foreword) (por [Brian Lonsdorf, aka "Prof Frisby"](https://twitter.com/DrBoolean))
+* [Prefácio](manuscript/preface.md/#preface)
+* [Capítulo 1: Porquê Programação Funcional?](manuscript/ch1.md/#Chapter-1-why-functional-programming)
+* [Capítulo 2: A Natureza Das Funções](manuscript/ch2.md/#chapter-2-the-nature-of-functions)
+* [Capítulo 3: Lidando Com Entradas De Funções](manuscript/ch3.md/#chapter-3-managing-function-inputs)
+* [Capítulo 4: Compondo Funções](manuscript/ch4.md/#chapter-4-composing-functions)
+* [Capítulo 5: Reduzindo Efeitos Coláterais](manuscript/ch5.md/#chapter-5-reducing-side-effects)
+* [Capítulo 6: Imutabilidade De Valores](manuscript/ch6.md/#chapter-6-value-immutability)
+* [Capítulo 7: Closure vs Objeto](manuscript/ch7.md/#chapter-7-closure-vs-object)
+* [Capítulo 8: Recursão](manuscript/ch8.md/#chapter-8-recursion)
+* [Capítulo 9: Operações Em Lista](manuscript/ch9.md/#chapter-9-list-operations)
+* [Capítulo 10: Async Funcional](manuscript/ch10.md/#chapter-10-functional-async)
+* [Capítulo 11: Juntando Tudo](manuscript/ch11.md/#chapter-11-putting-it-all-together)
+* [Apêndice A: Transducing](manuscript/apA.md/#appendix-a-transducing)
+* [Apêndice B: A humilde monada](manuscript/apB.md/#appendix-b-the-humble-monad)
+* [Apêndice C: Bibliotecas FP](manuscript/apC.md/#appendix-c-fp-libraries)
+
+## Publicação
+
+Esse livro foi publicado e está disponível para compra:
+
+<p align="center">
+    <a href="http://fljsbook.com"><img src="https://img.shields.io/badge/Buy-Leanpub-yellow.svg" title="Buy on Leanpub" alt="Buy on Leanpub"></a> <a href="http://manning.fljsbook.com"><img src="https://img.shields.io/badge/Buy-Manning-yellow.svg" title="Buy on Manning" alt="Buy on Manning"></a> <a href="http://amazon.fljsbook.com"><img src="https://img.shields.io/badge/Buy-Amazon-yellow.svg" title="Buy on Amazon" alt="Buy on Amazon"></a>
+</p>
+
+Se você pretende contribuir financeiramente além da compra do livro, eu tenho um [patreon](https://www.patreon.com/getify).
 
 <a href="https://www.patreon.com/getify">[![patreon.png](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/getify)</a>
 
-## In-person Training
+## Treinamentos
 
-The content for this book derives heavily from a training workshop I teach professionally (in both public and private-corporate workshop format) of the same name.
+O conteúdo desse livro vem de um treinamento, de mesmo nome do livro, que eu leciono (tanto em formato de workshop público, quanto em corporativo).
 
-If you like this content and would like to contact me regarding conducting training on this, or other various JS/HTML5/Node.js topics, please reach out to me through email: getify @ gmail
+Se você gostou desse conteúdo e gostaria de me contatar, considerando que conduzo também treinamentos de diversos tópicos como JS/HTML5/Node.js, utilize o email: getify @ gmail
 
-## Online Video Training
+Possuo também diversos cursos de JavaScript disponíveis em formato vídeo. Eu leciono [cursos](https://frontendmasters.com/teachers/kyle-simpson) pelo [Frontend Masters](https://frontendmasters.com), como o workshop [Functional-Light JavaScript v2](https://frontendmasters.com/courses/functional-javascript-v2/). Alguns de meus cursos também estão disponíveis pelo [PluralSight](https://www.pluralsight.com/search?q=kyle%20simpson&categories=all).
 
-I also have several JS training courses available in on-demand video format. I [teach courses](https://FrontendMasters.com/teachers/kyle-simpson) through [Frontend Masters](https://FrontendMasters.com), like my [Functional-Light JavaScript v2](https://frontendmasters.com/courses/functional-javascript-v2/) workshop. Some of my courses are also available on [PluralSight](https://www.pluralsight.com/search?q=kyle%20simpson&categories=all).
+## Contribuição
 
-## Contributions
+Qualquer contribuição será **obviamente muito bem apreciada**.
 
-Any contributions you make to this effort **are of course greatly appreciated**.
+Mas **POR FAVOR** leia o [guia de como contribuir](CONTRIBUTING.md) com cuidado antes de enviar um PR.
 
-But **PLEASE** read the [Contributions Guidelines](CONTRIBUTING.md) carefully before submitting a PR.
-
-## License & Copyright
+## Licensa & Copyright
 
 The materials herein are all (c) 2016-2018 Kyle Simpson.
 
