@@ -16,7 +16,7 @@ Valores dos tipos primitivos (`number`, `string`, `boolean`, `null` e `undefined
 2 = 2.5;
 ```
 
-Entretanto, O JS tem um comportamento peculiar que parece permitir a mutação desses valores de tipo primitivo: "boxing". Quando você acessa uma propriedade Em certos tipos de valores primitivos -- especificamente `number`, `string`, e `boolean` -- O JS por baixo dos panos automaticamente os envolve (também conhecido como "boxes") em seus equivalentes de objeto (`Number`, `String`, e `Boolean`, respectivamente).
+Entretanto, O JS tem um comportamento peculiar que parece permitir a mutação desses valores de tipo primitivo: "boxing". Quando você acessa uma propriedade em certos tipos de valores primitivos -- especificamente `number`, `string`, e `boolean` -- O JS por baixo dos panos automaticamente os envolve (também conhecido como "boxes") em seus equivalentes de objeto (`Number`, `String`, e `Boolean`, respectivamente).
 
 Considere:
 
@@ -33,7 +33,7 @@ Números normalmente não tem uma propriedade `length` disponível, então a con
 
 Mas o fato de o JS permitir que a instrução `x.length = 4` seja executada pode parecer preocupante, se não por outro motivo além da confusão que pode causar nos leitores. A boa notícia é, se você usar o modo estrito (`"use strict";`), tal instrução lançará um erro.
 
-E se você tentar mutar explicitamente a representação do objeto boxed como um valor?
+E se você tentar alterar explicitamente a representação do objeto encapsulado como um valor?
 
 ```js
 var x = new Number( 2 );
@@ -42,9 +42,9 @@ var x = new Number( 2 );
 x.length = 4;
 ```
 
-`x` in this snippet is holding a reference to an object, so custom properties can be added and changed without issue.
+`x` neste trecho contém uma referência a um objeto, então propriedades customizadas podem ser adicionadas e modificadas sem problemas
 
-The immutability of simple primitives like `number`s probably seems fairly obvious. But what about `string` values? JS developers have a very common misconception that strings are like arrays and can thus be changed. JS syntax even hints at them being "array like" with the `[ ]` access operator. However, strings are also immutable:
+A imutabilidade de simples tipos primitivos como `number` provavelmente parece muito óbvio. Mas e os valores `string`? Desenvolvedores JS têm um equívoco muito comum de que strings são como arrays e que isso pode ser modificado. A sintaxe do JS até sugere que eles sejam "semelhantes a um array" com o operador de acesso `[]`. No entanto, strings também são imutáveis:
 
 ```js
 var s = "hello";
@@ -57,51 +57,52 @@ s.length = 10;
 s;                  // "hello"
 ```
 
-Despite being able to access `s[1]` like it's an array, JS strings are not real arrays. Setting `s[1] = "E"` and `s.length = 10` both silently fail, just as `x.length = 4` did before. In strict mode, these assignments will fail, because both the `1` property and the `length` property are read-only on this primitive `string` value.
+Apesar de poder acessar `s[1]` como se fosse um array, Strings no JS não são arrays reais. Fazendo `s[1] = "E"` e `s.length = 10` os dois falham, assim como `x.length = 4` fez antes. Em modo estrito, Essas atribuições vão falhar, porque a propriedade `1` e a propriedade `length` é somente lida no valor primitivo `string`.
 
-Interestingly, even the boxed `String` object value will act (mostly) immutable as it will throw errors in strict mode if you change existing properties:
+Curiosamente, até mesmo o valor do objeto `String` encapsulada agirá(principlamente) imutável, pois vai gerar erros no modo estrito se vocêalterar as propriedades existentes:
 
 ```js
 "use strict";
 
 var s = new String( "hello" );
 
-s[1] = "E";         // error
-s.length = 10;      // error
+s[1] = "E";         // erro
+s.length = 10;      // erro
 
 s[42] = "?";        // OK
 
 s;                  // "hello"
 ```
 
-## Value to Value
+## Valor a Valor
+Detalharemos essa ideia ao longo do capítulo, mas apenas para começar com um entendimento claro em mente: a imutabilidade dos valores não significa que não possamos permitir que os valores mudem ao longo do nosso programa. Um programa sem mudança de estado não é muito interessante! Também não significa que nossas variáveis ​​não possam conter valores diferentes. Todos esses são equívocos comuns sobre a imutabilidade do valor.
 
-We'll unpack this idea more throughout the chapter, but just to start with a clear understanding in mind: value immutability does not mean we can't have values change over the course of our program. A program without changing state is not a very interesting one! It also doesn't mean that our variables can't hold different values. These are all common misconceptions about value immutability.
+Valores imutáveis significa que *quando* nos precisamos mudar o estado em nosso programa, devemos criar e rastrear um novo valor ao invés de alterar um valor existente.
 
-Value immutability means that *when* we need to change the state in our program, we must create and track a new value rather than mutate an existing value.
-
-For example:
+Por exemplo:
 
 ```js
-function addValue(arr) {
-    var newArr = [ ...arr, 4 ];
-    return newArr;
+function adicionaValor(arr) {
+    var novoArray = [ ...arr, 4 ];
+    return novoArray;
 }
 
-addValue( [1,2,3] );    // [1,2,3,4]
+adicionaValor( [1,2,3] );    // [1,2,3,4]
 ```
 
-Notice that we did not change the array that `arr` references, but rather created a new array (`newArr`) that contains the existing values plus the new `4` value.
+Observe que não mudamos o array `arr` que faz referência, mas em vez disso criei um novo array (`novoArray`) que contém os valores existentes mais o novo valor `4`.
 
-Analyze `addValue(..)` based on what we discussed in [Chapter 5](ch5.md) about side causes/effects. Is it pure? Does it have referential transparency? Given the same array, will it always produce the same output? Is it free of both side causes and side effects? **Yes.**
+Analise `adicionaValor(..)` com base no que discutimos no [Capítulo 5](ch5.md) sobre causas/efeitos colaterias. É puro? Possui transparência referencial? Dado o mesmo array, ela sempre produzirá o mesmo output? Está livre de causas e efeitos colaterais? **Yes.**
 
-Imagine the `[1,2,3]` array represents a sequence of data from some previous operations and we stored in some variable. It is our current state. If we want to compute what the next state of our application is, we call `addValue(..)`. But we want that act of next-state computation to be direct and explicit. So the `addValue(..)` operation takes a direct input, returns a direct output, and avoids the side effect of mutating the original array that `arr` references.
+Imagine que o array `[1,2,3]` representa uma sequência de dados de algumas operações anteriores e armazenamos em alguma variável. Esse é o nosso estado atual. Se quisermos programar qual é o próximo estado da nossa aplicação, chamamos `adicionaValor(..)`. Mas se quisermos que esse ato do próximo estado seja direto e explícito. Portanto, a operação `adicionaValor(..)` recebe um input direto, retorna um output direto, e evita o efeito colateral de alterar o array original que `arr` faz referência.
 
-This means we can calculate the new state of `[1,2,3,4]` and be fully in control of that transition of states. No other part of our program can unexpectedly transition us to that state early, or to another state entirely, like `[1,2,3,5]`. By being disciplined about our values and treating them as immutable, we drastically reduce the surface area of surprise, making our programs easier to read, reason about, and ultimately trust.
+Isso significa que podemos calcular o novo estado de `[1,2,3,4]` e estar totalmente no controle dessa transição de estados. Nenhuma outra parte do nosso programa pode nos trazer uma transição inesperada para esse estado antecipadamente, ou para outro estado inteiramente, como `[1,2,3,5]`. Ao sermos disciplinados em relação aos nossos valores e tratá-los como imutáveis, reduzimos dastricamente a superfície, tornando os nossos programas mais fáceis de ler, raciocionar e, em última analise, confiável.
 
-The array that `arr` references is actually mutable. We just chose not to mutate it, so we practiced the spirit of value immutability.
+O array `arr` que faz referência é atualmente mutável. Escolhemos não alterar isso, então praticamos o espirito do valor imutável.
 
-We can use the copy-instead-of-mutate strategy for objects, too. Consider:
+Podemos usar a estratégia copy-instead-of-mutate para objetos, também. 
+
+Considere:
 
 ```js
 function updateLastLogin(user) {
@@ -117,7 +118,7 @@ var user = {
 user = updateLastLogin( user );
 ```
 
-### Non-Local
+### Não local
 
 Non-primitive values are held by reference, and when passed as arguments, it's the reference that's copied, not the value itself.
 
